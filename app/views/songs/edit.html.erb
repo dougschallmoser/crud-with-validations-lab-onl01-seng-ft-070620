@@ -1,6 +1,16 @@
 <h1>Edit Song</h1>
 
 <%= form_for @song do |f| %>
+    <% if @song.errors.any? %>
+        <div id="error_explanation">
+            <ul>
+                <% @song.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
     Title: <%= f.text_field :title %><br>
     Released?: <%= f.check_box :released %><br>
     Release Year: <%= f.text_field :release_year %><br>
